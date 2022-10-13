@@ -1,0 +1,22 @@
+{% extends 'base.html' %}{% block content %}
+<div class="div-container">
+
+  <div class="jumbotron login-page">
+    <form method="post" class="forms">
+      <div class="mb-3">
+        <br />
+        {{form.hidden_tag()}}
+        <br />
+        {{form.email.label(class="form-label form-label")}}{{form.email(
+        class="form-control form-input")}}
+      </div>
+      <div class="mb-3">
+        {{form.password.label(class="form-label ")}}{{form.password(
+        class="form-control form-input")}}
+      </div>
+      {{form.submit( class="btn btn-primary mb-3 login-register-button")}}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

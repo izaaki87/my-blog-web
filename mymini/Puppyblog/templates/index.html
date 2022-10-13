@@ -1,0 +1,68 @@
+{% extends 'base.html' %} {% block content %}
+<section class="content-home">
+
+  <div class="div-container">
+    <div class="jumbotron">
+      <h2 align="center" class="home-title">charite's blog</h2>
+    </div>
+
+
+    <div class="margin-top-home">
+
+      {%for post in blog_posts.items%}
+      <div class="posts">
+        <a class="home-post-title" href="{{url_for('blog_posts.read_post', blog_post_id=post.id)}}">{{post.title}}
+        </a>
+        <div class="color-white">
+          <div>
+            <p class="published">
+              Published on {{post.date.strftime('%m-%d-%Y')}}
+            </p>
+
+            <p class="text-post">{{post.text[:200]}}...</p>
+
+            <p class="author">Author &dash;
+              <a class="author-link"
+                href="{{url_for('users.users_post', username=post.author.username)}}">{{post.author.username}}</a>
+            </p>
+            <div class="group-btn">
+              <a class="btn-primary-home " href="{{url_for('blog_posts.read_post', blog_post_id=post.id)}}">Keep Reading
+                <ion-icon name="arrow-forward"></ion-icon>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+  <nav aria-label="Page navigation example" class="page">
+
+    <ul class="pagination justify-content-center">
+      {% for page_num in blog_posts.iter_pages(left_edge=2,
+      left_current=2, right_current=5, right_edge=2) %}
+      <br />
+      <div class="pages-next">
+        {%if blog_posts.page == page_num%}
+
+        <li class="page-item">
+          <a class="links-page" href="{{url_for('core.index', page=page_num )}}">{{page_num}}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+          <a class="links-page" href="{{url_for('core.index', page=page_num )}}">{{page_num}}</a>
+        </li>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </ul>
+  </nav>
+</section>
+<footer class="footer">
+  <div class="flex-center">
+    <p class="copy"> &copy; Copyright by Charite Izaaki </p>
+  </div>
+</footer>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+<br />
+{% block content %}
+<div class="jumbotron register-pager">
+  <form method="post" class="forms">
+    <div class="mb-3">
+      <br />
+      {{form.hidden_tag()}}
+      <br />
+      {{form.email.label(class="form-label")}}{{form.email(
+      class="form-control form-input")}}
+    </div>
+
+    <div class="mb-3">
+      {{form.username.label(class="form-label")}}{{form.username(
+      class="form-control form-input")}}
+    </div>
+    <div class="mb-3">
+      {{form.password.label(class="form-label")}}{{form.password(
+      class="form-control form-input")}}
+    </div>
+    <div class="mb-3">
+      {{form.pass_confirm.label(class="form-label")}}{{form.pass_confirm(
+      class="form-control form-input")}}
+    </div>
+    {{form.submit( class="btn btn-primary mb-3 login-register-button")}}
+  </form>
+</div>
+
+{% endblock %}
